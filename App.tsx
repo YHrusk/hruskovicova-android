@@ -25,7 +25,7 @@ const Card = ({ id, value, isFlipped, onPress }: Card & { onPress: () => void })
   return (
     <TouchableOpacity style={[styles.card, isFlipped && styles.cardFlipped]} onPress={onPress}>
       {isFlipped ? (
-        <Image source={{ uri: `./images/${value}` }} style={styles.cardImage} />    //require, objekt
+        <Image source={{ uri: `./images/${value}` }} style={styles.cardImage} />    //require, objekt?
       ) : (
         <Image source={require('./images/blank.jpg')} style={styles.cardBackImage} />
       )}
@@ -46,9 +46,9 @@ const App = () => {
     if (flippedCards.length === 2) {
       //match of cards
       if (flippedCards[0].value === flippedCards[1].value) {
-         //previous state of cards, map = newArray, je jejich ID v array flippedCardIds? ->isMatched=true
+         //previous state of cards, map = newArray
         setCards((prevCards) =>
-          prevCards.map((card) => (flippedCardIds.includes(card.id) ? { ...card, isMatched: true } : card))
+          prevCards.map((card) => (flippedCardIds.includes(card.id) ? { ...card} : card))
         );
         //increase score by 2
         setScore((prevScore) => prevScore + 2);
